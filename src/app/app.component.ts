@@ -1,11 +1,7 @@
-import { Component } from '@angular/core';
+import { Component,Input } from '@angular/core';
 import { wishlistitems } from '../shared/models/wishlistitems';
 
-const filters = [
-  (item : wishlistitems)=> item,
-  (item : wishlistitems)=> !item.isComplete,
-  (item :wishlistitems)=>item.isComplete
-];
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -22,11 +18,14 @@ export class AppComponent {
        ];
   
   //visibleItems : wishlistitems[] =this.items;
-
+  filter:any=()=>{  };
   get visibleItems()  : wishlistitems[]
   {
-    return this.items.filter(filters[this.SelectOption]);
-  //  let  no=this.SelectOption;
+    return this.items.filter(this.filter);
+ 
+  }
+  //above
+   //  let  no=this.SelectOption;
   //  console.log(no);
   //  if(no == 0)
   //  {
@@ -43,14 +42,12 @@ export class AppComponent {
   //   return this.items.filter(item=>item.isComplete);
   //   console.log("this is 2");
   //  }
-  }
-
-  addwish()
-  {
-    this.items.push(new wishlistitems(this.newWish));
-    this.newWish='';
-    console.log(this.newWish);
-  }
+  // addwish()
+  // {
+  //   this.items.push(new wishlistitems(this.newWish));
+  //   this.newWish='';
+  //   console.log(this.newWish);
+  // }
   // selected(no : any)
   // {
   //   console.log(no);
@@ -70,9 +67,9 @@ export class AppComponent {
   //    console.log("this is 2");
   //   }
   // }
-  toggleItem(item: wishlistitems)
-  {
-    item.isComplete= !item.isComplete;
-    console.log(item);
-  }
+  // toggleItem(item: wishlistitems)
+  // {
+  //   item.isComplete= !item.isComplete;
+  //   console.log(item);
+  // }
 }

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component,OnInit,Input } from '@angular/core';
+import { wishlistitems } from '../../shared/models/wishlistitems';
 
 @Component({
   selector: 'app-wish-list',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrl: './wish-list.component.css'
 })
 export class WishListComponent {
+  @Input() wishes :wishlistitems[]=[];
 
+  toggleItem(item: wishlistitems)
+  {
+    item.isComplete= !item.isComplete;
+    console.log(item);
+  }
 }
